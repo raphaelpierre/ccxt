@@ -9,7 +9,7 @@ exchange = ccxt.binance()
 symbols = ['SOL/USDT']
 
 # Define the timeframe (e.g., 1 hour candles)
-timeframe = '1h'
+timeframe = '4h'
 
 # Define the number of periods for the Bollinger Bands calculation
 n_periods = 160
