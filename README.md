@@ -1,5 +1,4 @@
-# crypto
-CCXT API Exchange Playground
+# CCXT API Exchange Playground
 
 This Git repository is a Python script playground designed to provide a convenient environment for experimenting with the CCXT library and interacting with various cryptocurrency exchanges through their APIs. 
 
