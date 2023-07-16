@@ -1,15 +1,17 @@
-mport pandas as pd
 import ccxt
-import talib
 
-# Initialize the CCXT exchange client
-exchange = ccxt.binance()
+exchange_id = 'kucoin'  # Replace with your desired exchange ID
+symbol = 'BTC/USDT'  # Replace with the trading pair you want to retrieve the price for
 
-# Define the symbols (e.g., BTC/USDT, ETH/USDT, etc.)
-symbols = ['SOL/USDT']
+# Create an instance of the exchange
+exchange_class = getattr(ccxt, exchange_id)
+exchange = exchange_class()
 
-# Define the timeframe (e.g., 1 hour candles)
-timeframe = '1m'
+# Fetch the ticker data for the specified symbol
+ticker = exchange.fetch_ticker(symbol)
 
-for symbol in symbols:
-    
+# Retrieve the latest price from the ticker
+price = ticker['last']
+
+# Print the result
+print(f"Current {symbol} price: {price}")

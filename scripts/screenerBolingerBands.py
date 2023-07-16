@@ -6,10 +6,10 @@ import talib
 exchange = ccxt.binance()
 
 # Define the symbols (e.g., BTC/USDT, ETH/USDT, etc.)
-symbols = ['BTC/USDT']
+symbols = ['SOL/USDT']
 
 # Define the timeframe (e.g., 1 hour candles)
-timeframe = '4h'
+timeframe = '1h'
 
 # Define the number of periods for the Bollinger Bands calculation
 n_periods = 160
