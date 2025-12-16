@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galerie - Portfolio Artiste</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <h1>Atelier d'Art</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="gallery.html" class="active">Galerie</a></li>
+                <li><a href="index.html#about">À Propos</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+                <li><a href="admin.html" class="admin-link">Admin</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Gallery Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Ma Galerie</h1>
+            <p>Explorez mes collections et découvrez mes créations</p>
+        </div>
+    </section>
+
+    <!-- Filters -->
+    <section class="filters">
+        <div class="container">
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">Toutes</button>
+                <button class="filter-btn" data-filter="collection">Par Collection</button>
+            </div>
+            <div class="collection-select-container" style="display: none;">
+                <select id="collection-filter" class="collection-select">
+                    <option value="all">Toutes les collections</option>
+                </select>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Grid -->
+    <section class="gallery-section">
+        <div class="container">
+            <div class="gallery-grid" id="gallery-grid">
+                <!-- Artworks will be loaded dynamically -->
+            </div>
+            <div id="no-artworks" class="no-artworks" style="display: none;">
+                <p>Aucune œuvre pour le moment. Utilisez l'interface d'administration pour ajouter vos créations.</p>
+                <a href="admin.html" class="btn btn-primary">Accéder à l'admin</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="lightbox">
+        <span class="lightbox-close">&times;</span>
+        <div class="lightbox-content">
+            <img id="lightbox-image" src="" alt="">
+            <div class="lightbox-info">
+                <h3 id="lightbox-title"></h3>
+                <p id="lightbox-description"></p>
+                <div class="lightbox-details">
+                    <span id="lightbox-collection"></span>
+                    <span id="lightbox-dimensions"></span>
+                    <span id="lightbox-year"></span>
+                </div>
+                <div class="lightbox-price" id="lightbox-price"></div>
+            </div>
+        </div>
+        <button class="lightbox-nav lightbox-prev">❮</button>
+        <button class="lightbox-nav lightbox-next">❯</button>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Atelier d'Art. Tous droits réservés.</p>
+            <p>Créé avec passion</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/gallery.js"></script>
+</body>
+</html>

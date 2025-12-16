@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administration - Portfolio Artiste</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <h1>Atelier d'Art - Admin</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="gallery.html">Galerie</a></li>
+                <li><a href="admin.html" class="active">Admin</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Admin Header -->
+    <section class="page-header admin-header">
+        <div class="container">
+            <h1>Interface d'Administration</h1>
+            <p>Gérez vos collections et vos œuvres</p>
+        </div>
+    </section>
+
+    <!-- Admin Dashboard -->
+    <section class="admin-section">
+        <div class="container">
+            <div class="admin-tabs">
+                <button class="tab-btn active" data-tab="artworks">Œuvres</button>
+                <button class="tab-btn" data-tab="collections">Collections</button>
+                <button class="tab-btn" data-tab="export">Import/Export</button>
+            </div>
+
+            <!-- Artworks Tab -->
+            <div class="tab-content active" id="artworks-tab">
+                <div class="admin-header-actions">
+                    <h2>Gestion des Œuvres</h2>
+                    <button class="btn btn-primary" id="add-artwork-btn">+ Ajouter une Œuvre</button>
+                </div>
+
+                <div class="artworks-list" id="artworks-list">
+                    <!-- Artworks will be loaded dynamically -->
+                </div>
+            </div>
+
+            <!-- Collections Tab -->
+            <div class="tab-content" id="collections-tab">
+                <div class="admin-header-actions">
+                    <h2>Gestion des Collections</h2>
+                    <button class="btn btn-primary" id="add-collection-btn">+ Créer une Collection</button>
+                </div>
+
+                <div class="collections-list" id="collections-list">
+                    <!-- Collections will be loaded dynamically -->
+                </div>
+            </div>
+
+            <!-- Import/Export Tab -->
+            <div class="tab-content" id="export-tab">
+                <h2>Import / Export des Données</h2>
+                <div class="export-section">
+                    <div class="export-card">
+                        <h3>Exporter les données</h3>
+                        <p>Téléchargez toutes vos collections et œuvres au format JSON.</p>
+                        <button class="btn btn-primary" id="export-data-btn">Télécharger JSON</button>
+                    </div>
+                    <div class="export-card">
+                        <h3>Importer les données</h3>
+                        <p>Importez un fichier JSON pour restaurer vos données.</p>
+                        <input type="file" id="import-file" accept=".json" style="display: none;">
+                        <button class="btn btn-secondary" id="import-data-btn">Importer JSON</button>
+                    </div>
+                    <div class="export-card">
+                        <h3>Réinitialiser</h3>
+                        <p>Supprimer toutes les données (attention, action irréversible).</p>
+                        <button class="btn btn-danger" id="reset-data-btn">Tout Réinitialiser</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal for Adding/Editing Artwork -->
+    <div id="artwork-modal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <h2 id="artwork-modal-title">Ajouter une Œuvre</h2>
+            <form id="artwork-form">
+                <input type="hidden" id="artwork-id">
+
+                <div class="form-group">
+                    <label for="artwork-title">Titre *</label>
+                    <input type="text" id="artwork-title" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="artwork-description">Description</label>
+                    <textarea id="artwork-description" rows="4"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="artwork-collection">Collection</label>
+                    <select id="artwork-collection">
+                        <option value="">Aucune collection</option>
+                    </select>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="artwork-year">Année</label>
+                        <input type="number" id="artwork-year" min="1900" max="2100">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="artwork-dimensions">Dimensions (ex: 50x70 cm)</label>
+                        <input type="text" id="artwork-dimensions">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="artwork-price">Prix (optionnel)</label>
+                    <input type="text" id="artwork-price" placeholder="ex: 500€">
+                </div>
+
+                <div class="form-group">
+                    <label for="artwork-image">URL de l'Image *</label>
+                    <input type="text" id="artwork-image" required placeholder="images/artworks/mon-oeuvre.jpg">
+                    <small>Placez vos images dans le dossier images/artworks/</small>
+                </div>
+
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" id="artwork-featured">
+                        Mettre en vedette
+                    </label>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Enregistrer</button>
+                    <button type="button" class="btn btn-secondary" id="cancel-artwork">Annuler</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal for Adding/Editing Collection -->
+    <div id="collection-modal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <h2 id="collection-modal-title">Créer une Collection</h2>
+            <form id="collection-form">
+                <input type="hidden" id="collection-id">
+
+                <div class="form-group">
+                    <label for="collection-name">Nom de la Collection *</label>
+                    <input type="text" id="collection-name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="collection-description">Description</label>
+                    <textarea id="collection-description" rows="4"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="collection-year">Année</label>
+                    <input type="number" id="collection-year" min="1900" max="2100">
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Enregistrer</button>
+                    <button type="button" class="btn btn-secondary" id="cancel-collection">Annuler</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Atelier d'Art. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html>

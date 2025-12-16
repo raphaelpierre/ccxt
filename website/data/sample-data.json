@@ -1,0 +1,69 @@
+{
+  "collections": [
+    {
+      "id": "col1",
+      "name": "Emotions d'Automne",
+      "description": "Une collection inspirée par les couleurs chaudes de l'automne, capturant la mélancolie et la beauté de cette saison transitoire.",
+      "year": 2024
+    },
+    {
+      "id": "col2",
+      "name": "Abstractions",
+      "description": "Exploration de formes et couleurs abstraites, un dialogue entre le chaos et l'harmonie.",
+      "year": 2023
+    },
+    {
+      "id": "col3",
+      "name": "Paysages Rêvés",
+      "description": "Des paysages imaginaires entre réalité et rêve, où la nature se transforme en poésie visuelle.",
+      "year": 2024
+    }
+  ],
+  "artworks": [
+    {
+      "id": "art1",
+      "title": "Lever de Soleil",
+      "description": "Un magnifique lever de soleil aux tons orangés qui illumine l'horizon. Cette œuvre capture la magie du premier moment du jour.",
+      "collectionId": "col1",
+      "year": 2024,
+      "dimensions": "60x80 cm",
+      "price": "450€",
+      "image": "images/artworks/placeholder1.jpg",
+      "featured": true
+    },
+    {
+      "id": "art2",
+      "title": "Formes Géométriques",
+      "description": "Jeu de formes et de couleurs primaires qui s'entrelacent pour créer une composition dynamique et moderne.",
+      "collectionId": "col2",
+      "year": 2023,
+      "dimensions": "50x50 cm",
+      "price": "350€",
+      "image": "images/artworks/placeholder2.jpg",
+      "featured": true
+    },
+    {
+      "id": "art3",
+      "title": "Montagne Mystique",
+      "description": "Une montagne enveloppée de brume, symbole de mystère et de spiritualité. Les nuances de bleu et de gris créent une atmosphère contemplative.",
+      "collectionId": "col3",
+      "year": 2024,
+      "dimensions": "70x100 cm",
+      "price": "600€",
+      "image": "images/artworks/placeholder3.jpg",
+      "featured": false
+    },
+    {
+      "id": "art4",
+      "title": "Feuilles d'Or",
+      "description": "La danse des feuilles d'automne dans le vent, capturée dans un tourbillon de couleurs chaudes.",
+      "collectionId": "col1",
+      "year": 2024,
+      "dimensions": "55x75 cm",
+      "price": "400€",
+      "image": "images/artworks/placeholder4.jpg",
+      "featured": true
+    }
+  ],
+  "exportDate": "2024-01-15T00:00:00.000Z"
+}

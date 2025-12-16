@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Artiste Peintre</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <h1>Atelier d'Art</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="active">Accueil</a></li>
+                <li><a href="gallery.html">Galerie</a></li>
+                <li><a href="#about">À Propos</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="admin.html" class="admin-link">Admin</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h2 class="hero-title">Bienvenue dans mon univers artistique</h2>
+            <p class="hero-subtitle">Découvrez mes créations, mes toiles et mes collections</p>
+            <a href="gallery.html" class="btn btn-primary">Découvrir la Galerie</a>
+        </div>
+        <div class="hero-overlay"></div>
+    </section>
+
+    <!-- Latest Collections -->
+    <section class="collections" id="collections">
+        <div class="container">
+            <h2 class="section-title">Dernières Collections</h2>
+            <div class="collections-grid" id="latest-collections">
+                <!-- Collections will be loaded dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="images/artist-placeholder.jpg" alt="Artiste" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22500%22%3E%3Crect fill=%22%23ddd%22 width=%22400%22 height=%22500%22/%3E%3Ctext fill=%22%23999%22 font-family=%22sans-serif%22 font-size=%2224%22 text-anchor=%22middle%22 x=%22200%22 y=%22250%22%3EPhoto Artiste%3C/text%3E%3C/svg%3E'">
+                </div>
+                <div class="about-text">
+                    <h2>À Propos de l'Artiste</h2>
+                    <p>Passionnée par l'art depuis mon plus jeune âge, je crée des œuvres qui explorent les émotions humaines à travers les couleurs et les textures.</p>
+                    <p>Chaque toile est une histoire, un moment capturé dans le temps, une expression de mon âme d'artiste. Je travaille principalement avec des techniques mixtes, mêlant peinture acrylique, huile et éléments naturels.</p>
+                    <p>Mes collections évoluent au fil des saisons et de mes inspirations. N'hésitez pas à découvrir mon univers et à me contacter pour toute question ou commande personnalisée.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Artworks -->
+    <section class="featured">
+        <div class="container">
+            <h2 class="section-title">Œuvres en Vedette</h2>
+            <div class="featured-grid" id="featured-artworks">
+                <!-- Featured artworks will be loaded dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">Me Contacter</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Informations de Contact</h3>
+                    <p><strong>Email:</strong> contact@atelier-art.fr</p>
+                    <p><strong>Téléphone:</strong> +33 6 XX XX XX XX</p>
+                    <p><strong>Atelier:</strong> Paris, France</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">Instagram</a>
+                        <a href="#" class="social-link">Facebook</a>
+                        <a href="#" class="social-link">Pinterest</a>
+                    </div>
+                </div>
+                <form class="contact-form">
+                    <input type="text" placeholder="Votre nom" required>
+                    <input type="email" placeholder="Votre email" required>
+                    <textarea placeholder="Votre message" rows="5" required></textarea>
+                    <button type="submit" class="btn btn-primary">Envoyer</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Atelier d'Art. Tous droits réservés.</p>
+            <p>Créé avec passion</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
