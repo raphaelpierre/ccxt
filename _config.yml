@@ -21,4 +21,6 @@ exclude:
   - ccxt/
   - examples/
 
+source: docs/
+
 theme: jekyll-theme-primer
