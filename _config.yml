@@ -1,0 +1,24 @@
+# Exclude Python and build files from Jekyll processing
+exclude: 
+  - bin/
+  - "*.py"
+  - "*.pyc"
+  - __pycache__/
+  - .git/
+  - .gitignore
+  - venv/
+  - env/
+  - "*.so"
+  - "*.c"
+  - "*.cpp"
+  - build/
+  - dist/
+  - "*.egg-info"
+  - setup.py
+  - requirements.txt
+  - . github/
+  - python/
+  - ccxt/
+  - examples/
+
+theme: jekyll-theme-primer
