@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IG Trading - Gestion TP/SL</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>IG Trading - Gestion Avancée TP/SL</h1>
+            <div class="account-info" id="accountInfo" style="display: none;">
+                <span class="status-indicator connected"></span>
+                <span id="accountId">Non connecté</span>
+            </div>
+        </header>
+
+        <!-- Authentication Panel -->
+        <div class="auth-panel" id="authPanel">
+            <h2>Connexion à IG Markets</h2>
+            <form id="authForm">
+                <div class="form-group">
+                    <label for="apiKey">API Key</label>
+                    <input type="text" id="apiKey" required>
+                </div>
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" required>
+                </div>
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" id="demoAccount" checked>
+                        Compte Démo
+                    </label>
+                </div>
+                <button type="submit" class="btn btn-primary">Se connecter</button>
+            </form>
+        </div>
+
+        <!-- Main Trading Interface -->
+        <div class="trading-interface" id="tradingInterface" style="display: none;">
+            <div class="panels">
+                <!-- Left Panel - New Position -->
+                <div class="panel new-position-panel">
+                    <h2>Nouvelle Position</h2>
+
+                    <!-- Market Search -->
+                    <div class="form-group">
+                        <label for="marketSearch">Rechercher un marché</label>
+                        <input type="text" id="marketSearch" placeholder="Ex: EUR/USD, FTSE 100...">
+                        <div id="marketResults" class="market-results"></div>
+                    </div>
+
+                    <!-- Position Form -->
+                    <form id="positionForm">
+                        <input type="hidden" id="selectedEpic">
+
+                        <div class="form-group">
+                            <label>Marché sélectionné</label>
+                            <div id="selectedMarket" class="selected-market">Aucun marché sélectionné</div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="direction">Direction</label>
+                                <select id="direction" required>
+                                    <option value="BUY">BUY (Long)</option>
+                                    <option value="SELL">SELL (Short)</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="size">Taille</label>
+                                <input type="number" id="size" step="0.1" min="0.1" required>
+                            </div>
+                        </div>
+
+                        <div class="tp-sl-section">
+                            <h3>Stop Loss</h3>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="slType">Type</label>
+                                    <select id="slType">
+                                        <option value="none">Aucun</option>
+                                        <option value="level">Niveau</option>
+                                        <option value="distance">Distance (points)</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="slValue">Valeur</label>
+                                    <input type="number" id="slValue" step="0.00001">
+                                </div>
+                            </div>
+
+                            <!-- Trailing Stop -->
+                            <div class="trailing-stop-section">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="trailingStopEnabled">
+                                    Trailing Stop Loss
+                                </label>
+                                <div id="trailingStopConfig" style="display: none;">
+                                    <div class="form-group">
+                                        <label for="trailingIncrement">Incrément (points)</label>
+                                        <input type="number" id="trailingIncrement" step="1" value="10">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tp-sl-section">
+                            <h3>Take Profit</h3>
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="multipleTpEnabled">
+                                Take Profits Multiples
+                            </label>
+
+                            <!-- Single TP -->
+                            <div id="singleTpConfig">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="tpType">Type</label>
+                                        <select id="tpType">
+                                            <option value="none">Aucun</option>
+                                            <option value="level">Niveau</option>
+                                            <option value="distance">Distance (points)</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="tpValue">Valeur</label>
+                                        <input type="number" id="tpValue" step="0.00001">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Multiple TPs -->
+                            <div id="multipleTpConfig" style="display: none;">
+                                <div id="tpLevels">
+                                    <!-- TP levels will be added dynamically -->
+                                </div>
+                                <button type="button" class="btn btn-secondary" id="addTpLevel">
+                                    + Ajouter TP
+                                </button>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-large">Ouvrir Position</button>
+                    </form>
+                </div>
+
+                <!-- Right Panel - Open Positions -->
+                <div class="panel positions-panel">
+                    <div class="panel-header">
+                        <h2>Positions Ouvertes</h2>
+                        <button class="btn btn-secondary" id="refreshPositions">Actualiser</button>
+                    </div>
+
+                    <div id="positionsList" class="positions-list">
+                        <p class="no-positions">Aucune position ouverte</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Notification Container -->
+        <div id="notifications" class="notifications"></div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
